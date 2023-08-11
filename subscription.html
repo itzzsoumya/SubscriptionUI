@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+/* RESET RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap");
+
+:root {
+  --white: white;
+  --gray: #999;
+  --lightgray: whitesmoke;
+  --darkgreen: #08185c;
+  --popular: #08185c;
+  --starter: #08185c;
+  --essential: #08185c;
+  --professional: #08185c;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+body {
+  font: 18px/1.5 "Noto Sans", sans-serif;
+  background: var(--lightgray);
+  margin-top: -80px;
+  /* overflow: hidden; */
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.container {
+  max-width: 88%;
+  text-align: center;
+  padding: 0 5px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  padding: 50px 0;
+}
+
+.intro-text a {
+  text-decoration: underline;
+}
+
+/* SWITCH STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.switch-wrapper {
+  position: relative;
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid lightgrey;
+  margin-top: 35px;
+  border-radius: 30px;
+  background-color:rgb(4, 4, 79) ;
+}
+
+.switch-wrapper [type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.switch-wrapper [type="radio"]:checked#monthly ~ label[for="monthly"],
+.switch-wrapper [type="radio"]:checked#yearly ~ label[for="yearly"] {
+  color: rgb(11, 11, 93);
+}
+
+.switch-wrapper [type="radio"]:checked#monthly ~ label[for="monthly"]:hover,
+.switch-wrapper [type="radio"]:checked#yearly ~ label[for="yearly"]:hover {
+  background: transparent;
+}
+
+.switch-wrapper
+  [type="radio"]:checked#monthly
+  + label[for="yearly"]
+  ~ .highlighter {
+  transform: none;
+  
+}
+
+.switch-wrapper
+  [type="radio"]:checked#yearly
+  + label[for="monthly"]
+  ~ .highlighter {
+  transform: translateX(100%);
+  
+}
+
+.switch-wrapper label {
+  font-size: 16px;
+  z-index: 1;
+  min-width: 100px;
+  line-height: 60px;
+  cursor: pointer;
+  border-radius: 30px;
+  color: rgb(255, 255, 255);
+  
+  transition: color 0.25s ease-in-out;
+}
+
+.switch-wrapper label:hover {
+  background: rgb(21, 14, 84);
+  color: rgb(255, 255, 255);
+}
+
+.switch-wrapper .highlighter {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  border-radius: 30px;
+  background-color:rgb(255, 255, 255) ;
+  color: rgb(4, 4, 79);
+  transition: transform 0.25s ease-in-out;
+}
+
+/* TABLE STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.table-wrapper {
+  background: var(--white);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+table tr {
+  display: flex;
+}
+
+table th,
+table td {
+  width: 25%;
+  min-width: 150px;
+}
+
+.heading{
+    width: 50%;
+    padding: 26px 8px;
+    color: white;
+    margin: 15px auto;
+    background-color: #08185c;
+    opacity: 0.6;
+}
+
+.heading1{
+    width: 50%;
+    padding: 26px 8px;
+    color: white;
+    margin: 15px auto;
+    background-color: #08185c;
+  
+}
+
+table .hide {
+  display: none;
+}
+
+/* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (min-width: 780px) {
+  table td {
+    padding: 20px;
+  }
+}
+
+/* FOOTER STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  z-index: 1;
+  font-size: 16px;
+  background: var(--lightgray);
+}
+
+.page-footer a {
+  display: flex;
+  margin-left: 4px;
+}
+.btn{
+    width: 24%;
+    padding: 6px;
+    margin: 0 auto;
+    background-color: #08185c;
+}
+.btn a{
+    color: white;
+    font-size: 16px;
+    
+}
+.btn:hover{
+    opacity: 0.6;
+}
+
+.td1{
+  color: #08185c;
+}
+
+    </style>
+
+
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="intro-text">
+          
+          
+        </div>
+        
+        <div class="table-wrapper">
+            <h2 style="padding: 9px 0;">Choose the right plan for you</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <div>
+                    <div class="switch-wrapper">
+          <input id="monthly" type="radio" name="switch" checked>
+          <input id="yearly" type="radio" name="switch">
+          <label for="monthly">Monthly</label>
+          <label for="yearly">Yearly</label>
+          <span class="highlighter"></span>
+        </div>
+                    <div class="svg-wrapper">
+                     
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div >
+
+                    <div class="price monthly">
+                      <div class="amount heading1 ">Mobile</div>
+                    </div>
+                    <div class="price yearly  hide">
+                      <div class="amount heading">Mobile</div>
+                      
+                    </div>
+
+                  </div>
+                  
+                </th>
+                <th>
+                  <div class="heading">
+
+                    <div class="price monthly">
+                      <div class="amount">Basic </div>
+                    </div>
+                    <div class="price yearly hide">
+                      <div class="amount">Basic</div>
+                      
+                    </div>
+
+                  </div>
+             
+                </th>
+                <th>
+                  <div class="heading">
+
+                    <div class="price monthly">
+                      <div class="amount">Standard </div>
+                    </div>
+                    <div class="price yearly hide">
+                      <div class="amount">Standard</div>
+                      
+                    </div>
+
+                  </div>
+                 
+                </th>
+
+
+                <th>
+                    <div class="headinwg">
+
+                      <div class="price monthly">
+                        <div class="amount heading ">Primium</div>
+                      </div>
+                      <div class="price yearly  hide">
+                        <div class="amount heading1">Primium</div>
+                        
+                      </div>
+
+                    </div>
+               
+                  </th>
+
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monthly Price</td>
+                <td>
+                    <div class="price monthly">
+                        <div class="amount td1">Rs.100 </div>
+                      </div>
+                      <div class="price yearly hide">
+                        <div class="amount">Rs.1000</div>
+                        
+                      </div>
+                </td>
+                <td>
+                    <div class="price monthly">
+                        <div class="amount">Rs.200 </div>
+                      </div>
+                      <div class="price yearly hide">
+                        <div class="amount">Rs.2000 </div>
+                       
+                      </div>
+                </td>
+                
+                <td>
+                    <div class="price monthly">
+                        <div class="amount">Rs.500 </div>
+                      </div>
+                      <div class="price yearly hide">
+                        <div class="amount">Rs.5000 </div>
+                        
+                      </div>
+                  </td>
+                <td>
+                    <div class="price monthly">
+                        <div class="amount">Rs.700 </div>
+                      </div>
+                      <div class="price yearly hide">
+                        <div class="amoun td1">Rs.7000 </div>
+                        
+                      </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Video quality</td>
+                <td>
+                  
+
+                  <div class="price monthly">
+                    <div class="amount td1 ">Good</div>
+                  </div>
+                  <div class="price yearly  hide">
+                    <div class="amount">Good</div>
+                    
+                  </div>
+
+                </td>
+                <td>
+                  Good
+                </td>
+                <td>
+                  Better
+                </td>
+                <td>
+                    <div class="price monthly">
+                      <div class="amount  ">Best</div>
+                    </div>
+                    <div class="price yearly  hide">
+                      <div class="amount td1">Best</div>
+                      
+                    </div>
+                  </td>
+              </tr>
+              <tr>
+                <td>Resolution</td>
+                <td>
+                  
+                  <div class="price monthly">
+                    <div class="amount td1 ">480p</div>
+                  </div>
+                  <div class="price yearly  hide">
+                    <div class="amount ">480p</div>
+                    
+                  </div>
+                </td>
+                <td>
+                  480p
+                </td>
+                <td>
+                  1080p
+                </td>
+                <td>
+                  
+                    <div class="price monthly">
+                      <div class="amount  ">  4k+HDR</div>
+                    </div>
+                    <div class="price yearly  hide">
+                      <div class="amount td1 ">  4k+HDR</div>
+                      
+                    </div>
+                    
+                  </td>
+              </tr>
+              <tr>
+                <td>Device you can use to watch</td>
+            
+                <td>
+                  <div class="price monthly">
+                    <div class="amount td1 ">
+                      Phone
+                  <br>
+                  <br>
+                  Tablet
+
+                    </div>
+                  </div>
+                  <div class="price yearly  hide">
+                    <div class="amount  ">  
+                      Phone
+                  <br>
+                  <br>
+                  Tablet
+                    </div>
+                    
+                  </div>
+                  
+
+                </td>
+                
+                    <td>
+                        Phone
+                        <br>
+                        <br>
+                        Tablet
+                        <br>
+                        <br>
+                        Computer
+                        <br>
+                        <br>
+                        TV
+      
+                      </td>
+                
+                      <td>
+                        Phone
+                        <br>
+                        <br>
+                        Tablet
+                        <br>
+                        <br>
+                        Computer
+                        <br>
+                        <br>
+                        TV
+      
+                      </td>
+                      <td>
+
+                        <div class="price monthly">
+                          <div class="amount  "> 
+                            Phone
+                        <br>
+                        <br>
+                        Tablet
+                        <br>
+                        <br>
+                        Computer
+                        <br>
+                        <br>
+                        TV
+                          </div>
+                        </div>
+                        <div class="price yearly  hide">
+                          <div class="amount td1 ">  
+                            Phone
+                        <br>
+                        <br>
+                        Tablet
+                        <br>
+                        <br>
+                        Computer
+                        <br>
+                        <br>
+                        TV
+                          </div>
+                          
+                        </div>
+                        
+      
+                      </td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+
+        <br>
+
+        <div class="btn">
+          <a href="completePayment.html"><button type="button" style="color: white; font-size: 16px;" >Next</button></a>
+            
+        </div>
+
+      </div>
+      
+
+
+
+
+      <script>
+
+const tableWrapper = document.querySelector(".table-wrapper");
+const switchInputs = document.querySelectorAll(".switch-wrapper input");
+const prices = tableWrapper.querySelectorAll(".price");
+const toggleClass = "hide";
+
+for (const switchInput of switchInputs) {
+  switchInput.addEventListener("input", function () {
+    for (const price of prices) {
+      price.classList.add(toggleClass);
+    }
+    const activePrices = tableWrapper.querySelectorAll(
+      `.price.${switchInput.id}`
+    );
+    for (const activePrice of activePrices) {
+      activePrice.classList.remove(toggleClass);
+    }
+  });
+}
+
+      </script>
+
+
+</body>
+</html>

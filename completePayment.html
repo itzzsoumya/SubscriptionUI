@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Information</title>
+
+    <style>
+        *{
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+        .container{
+            font-family: Arial, sans-serif;
+            background-color: #001e3f;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .main{
+            height: 38%;
+            width: 60%;
+            background-color: #fff;
+            /* padding: 20px; */
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+           
+        }
+        .inner{
+            display: grid;
+            grid-template-columns: 55% 45%;
+            
+            text-decoration: none;
+            
+        }
+        .one{
+            padding: 40px;
+            
+        }
+        .box{
+            border: 1px solid black;
+            width: 80%;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .box .o1{
+            width: 56%;
+            border-radius: 10px;
+            outline: none;
+            padding: 10px;
+        }
+        .box .o2{
+            width: 14%;
+            padding: 5px;
+            outline: none;
+            border-radius: 10px;
+        }
+        .box .o3{
+            width: 10%;
+            outline: none;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .btn{
+            background-color: #103a67;
+            padding: 13px 40px;
+            color: #fff;
+            border-radius: 5px;
+
+        }
+        .btn a{
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn:hover{
+            opacity: 0.6;
+        }
+        .two{
+            background-color: #f0f0f0;
+            height: auto;
+            padding: 32px;
+            border-radius: 0 12px 12px 0px;
+
+           
+        }
+        .part{
+            display: grid;
+            font-size: 14px;
+            grid-template-columns: auto auto;
+        }
+        .ppp{
+            text-align: end;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="main">
+            <div class="inner">
+                <div class="one">
+                    <h2>
+                        Complete Payment
+                    </h2><br>
+                    <p>Enter your credit or debit card details below</p><br>
+                    <div class="box">
+                    <input type="text" class="o1" placeholder="Card Number">
+                    <input type="text" class="o2" placeholder="MM/YY">
+                    <input type="text" class="o3" placeholder="CVV">
+                    </div><br><br>
+                    
+                    <a href="active.html"><button class="btn" type="button"  >Confirm Payment</button></a>
+                </div>
+                <div class="two">
+
+                    <h2>Order Summary</h2><br><br>
+
+                    <div class="part">
+                        <div class="pp">
+                            <h3>Plan Name</h3><br><br>
+                            <h3>Billing Cycle</h3><br><br>
+                            <h3>Plan Price</h3><br><br>
+
+                        </div>
+                        <div class="ppp">
+                            <h3>Basic</h3><br><br>
+                            <h3>Monthly</h3><br><br>
+                            <h3>200/mo</h3><br><br>
+
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+                
+
+
+            </div>
+
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>
